@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d101b">
+  <title>Người đứng sau công trình | Phóng sự chân dung</title>
+  
+  <!-- Google Fonts: Inter & Merriweather -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  
+  
+
+<style>
+:root{
+  --bg:#0d101b;--bg2:#14192a;--panel:rgba(255,255,255,.055);
+  --line:rgba(195,202,255,.15);--text:#f1f2fb;--muted:#a9b0c8;
+  --accent:#8d9cff;--accent2:#b6c0ff;--accent3:#75d7d0;
+  --max:1100px;--sans:'Inter',Arial,sans-serif;--serif:'Merriweather',Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{margin:0;background:radial-gradient(ellipse at 12% 0%,rgba(92,104,193,.19),transparent 34%),radial-gradient(ellipse at 88% 35%,rgba(39,151,155,.09),transparent 28%),var(--bg);color:var(--text);font:16px/1.9 var(--sans);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}
+::selection{background:#8d9cff55;color:white}
+.reading-progress-bar{position:fixed;top:0;left:0;width:0;height:3px;z-index:1000;background:linear-gradient(90deg,var(--accent),var(--accent3));box-shadow:0 0 18px #8d9cff80}
+.container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+.site-header{position:fixed;inset:0 0 auto;z-index:100;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s}
+.site-header.scrolled{background:#0d101bd9;border-color:var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.header-container{max-width:1240px;margin:auto;padding:17px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand-logo{font-size:.69rem;letter-spacing:.16em;font-weight:800;line-height:1.6;color:#f3f4ff;max-width:300px}
+.brand-logo:before{content:"";display:inline-block;width:25px;height:2px;background:var(--accent);vertical-align:middle;margin-right:11px}
+.header-actions{display:flex;gap:8px}
+.header-btn{border:1px solid #ffffff35;background:#0d101b62;color:#f4f5ff;padding:9px 13px;border-radius:999px;font-size:.7rem;letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(10px);transition:.25s}
+.header-btn:hover{background:#8d9cff25;border-color:var(--accent);transform:translateY(-2px)}
+.hero-cover-section{position:relative;min-height:min(860px,100svh);display:flex;align-items:flex-end;overflow:hidden;padding:150px 0 80px;isolation:isolate}
+.hero-bg-image{position:absolute;inset:0;z-index:-3;background-image:linear-gradient(130deg,#242a4b,#0b111d);background-position:center;background-size:cover;transform:scale(1.02);transition:transform 1.4s cubic-bezier(.2,.7,.2,1);animation:heroDrift 18s ease-in-out infinite alternate}
+.hero-cover-section:hover .hero-bg-image{transform:scale(1.065)}
+.hero-overlay{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(8,11,22,.92) 0%,rgba(8,11,22,.65) 48%,rgba(8,11,22,.16) 100%),linear-gradient(0deg,#0d101b 0%,transparent 55%),linear-gradient(180deg,rgba(10,13,25,.45),transparent 30%)}
+.hero-content{padding-top:60px}
+.category-tag-badge{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid #aeb8ff70;border-radius:999px;background:#8d9cff18;color:var(--accent2);font-size:.68rem;letter-spacing:.15em;font-weight:700;backdrop-filter:blur(12px)}
+.category-tag-badge .icon{font-size:.9rem}
+.hero-title{font-size:clamp(2.8rem,7vw,6rem);line-height:1.2;letter-spacing:-.03em;max-width:900px;margin:26px 0 20px;font-weight:900;text-shadow:0 8px 45px #0007}
+.hero-subtitle{font:500 clamp(1.15rem,2.6vw,2rem)/1.5 var(--serif);color:#d9ddff;max-width:760px;margin:0 0 22px}
+.hero-sapo{max-width:760px;color:#d0d5e8;font-size:clamp(.95rem,1.5vw,1.08rem);line-height:1.95;margin-bottom:28px;font-weight:300}
+.hero-meta{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;color:#bdc4dc;font-size:.75rem}
+.hero-meta .dot{color:var(--accent)}
+.hero-meta strong{color:#fff;font-weight:600}
+.video-standalone-section{padding-top:64px;padding-bottom:38px}
+.standalone-video-card,.standalone-audio-card,.qa-interview-card,.bottom-share-box,.comments-container{border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border-radius:18px;overflow:hidden;box-shadow:0 24px 80px #0002}
+.card-header{display:flex;align-items:center;gap:12px;padding:20px 24px;border-bottom:1px solid var(--line)}
+.card-header .icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#8d9cff20;color:var(--accent2)}
+.card-header h3{margin:0;font-size:.78rem;letter-spacing:.15em}
+.duration{color:var(--accent3);font-size:.78em;margin-left:6px}
+.video-wrapper{position:relative;aspect-ratio:16/9;background:#080b13;overflow:hidden}
+.video-wrapper video{display:block;width:100%;height:100%;object-fit:contain;background:#080b13}
+.article-body{max-width:800px;padding-top:36px;padding-bottom:24px}
+.section-heading {
+  font: 700 clamp(1.6rem, 3.5vw, 2.3rem)/1.35 var(--serif);
+  letter-spacing: -0.02em;
+  margin: 45px 0 25px;
+  color: #f2f3ff;
+  text-wrap: normal !important; /* Tắt tính năng tự ép ngắt dòng cân bằng */
+  max-width: 100%;             /* Cho phép trải rộng hết khung chứa */
+}.section-heading:before{content:"";display:block;width:44px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3));margin-bottom:18px;border-radius:5px}
+.paragraph{color:#c7cde0;font-weight:300;line-height:2.05;margin:0 0 28px;font-size:1.05rem;text-align:left;overflow-wrap:break-word;word-break:normal}
+.body-media{margin:40px 0 45px}
+.image-holder{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:linear-gradient(135deg,#272d4c,#111a28);box-shadow:0 18px 55px #0003}
+.image-holder img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s;filter:brightness(.86) saturate(.82)}
+.body-media:hover .image-holder img{transform:scale(1.045);filter:brightness(1) saturate(1)}
+.image-holder:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(0deg,#0b0e18a8,transparent);pointer-events:none}
+.caption{font-size:.82rem;color:#9ea8c4;text-align:center;padding:14px 10px 0;line-height:1.7}
+.caption strong{color:#dfe3ff;font-weight:600}
+.pull-quote-block{position:relative;margin:52px 0;padding:clamp(28px,5vw,48px);border:1px solid #8d9cff55;border-radius:16px;background:linear-gradient(125deg,rgba(141,156,255,.15),rgba(117,215,208,.045));overflow:hidden}
+.pull-quote-block:before{content:"“";position:absolute;right:20px;top:-65px;font:14rem/1 var(--serif);color:#b6c0ff12}
+.quote-text{position:relative;margin:0;color:#e3e6ff;font:500 clamp(1.15rem,2.5vw,1.65rem)/1.85 var(--serif);z-index:1}
+.quote-author{position:relative;margin-top:20px;color:var(--accent3);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;z-index:1}
+.audio-standalone-section{padding:20px 0 46px}
+.standalone-audio-card{padding:25px 28px}
+.audio-badge-header{display:flex;align-items:center;gap:10px;color:var(--accent3);font-size:.68rem;letter-spacing:.16em;font-weight:800}
+.audio-title{font:700 clamp(1.15rem,2.4vw,1.65rem)/1.45 var(--serif);margin:16px 0 20px}
+.audio-player-custom{padding:14px;border-radius:12px;background:#090d18a8;border:1px solid var(--line)}
+.audio-player-custom audio{width:100%;height:42px;accent-color:var(--accent)}
+.audio-quote-desc{color:var(--muted);font-size:.8rem;margin:15px 0 0}
+.qa-interview-card{margin:42px 0;padding:26px}
+.qa-title{color:var(--accent2);font-size:.7rem;letter-spacing:.17em;font-weight:800;margin-bottom:22px}
+.qa-content{display:grid;gap:14px}
+.qa-item{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:start;padding:17px;border-radius:12px;background:#ffffff04}
+.qa-item p{margin:0;color:#cbd1e5;line-height:1.9;font-size:.92rem}
+.q-badge,.a-badge{display:inline-flex;justify-content:center;align-items:center;min-width:70px;padding:5px 10px;border-radius:999px;font-size:.68rem;letter-spacing:.08em;font-weight:800}
+.q-badge{color:#c2caff;background:#8d9cff1b;border:1px solid #8d9cff50}
+.a-badge{color:#8de4dc;background:#75d7d01a;border:1px solid #75d7d050}
+.article-credits-block{border-top:1px solid var(--line);padding-top:18px;gap:15px}
+.article-credits-block .photo-credit{color:#9ea8c4!important;font-size:.8rem!important}
+.article-credits-block .author-credit{color:#dfe3ff!important;font-size:.75rem!important;font-weight:700!important}
+.comments-section{padding-top:45px;padding-bottom:78px}
+.bottom-share-box{padding:25px 28px;margin-bottom:24px;text-align:center}
+.bottom-share-box h3,.comments-header h3{font:700 1.35rem/1.4 var(--serif);margin:0 0 8px}
+.bottom-share-box p{font-size:.84rem;color:var(--muted);margin:0 0 18px}
+.social-share-bar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.share-btn{padding:10px 16px;border:1px solid var(--line);border-radius:9px;background:#ffffff06;color:#e9ebff;font-size:.8rem;cursor:pointer;transition:transform .25s,border-color .25s,background .25s}
+.share-btn:hover{transform:translateY(-3px);border-color:var(--accent);background:#8d9cff18}
+.comments-container{padding:26px}
+.comments-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.comments-header h3{font-size:1.1rem;letter-spacing:.04em}
+.comment-form{display:grid;gap:12px;margin-bottom:24px}
+.comment-form input,.comment-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:#090d18a8;color:var(--text);padding:13px 15px;outline:none;transition:border-color .2s,box-shadow .2s}
+.comment-form input:focus,.comment-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px #8d9cff16}
+.comment-form textarea{resize:vertical;min-height:100px}
+.submit-comment-btn{justify-self:start;border:0;border-radius:9px;padding:12px 18px;background:linear-gradient(110deg,var(--accent),var(--accent3));color:#0b1020;font-weight:800;font-size:.82rem;cursor:pointer;transition:transform .2s,filter .2s}
+.submit-comment-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.comments-list{display:grid;gap:12px}
+.comment-item{display:flex;gap:14px;padding:17px;border:1px solid var(--line);border-radius:12px;background:#ffffff03;animation:popIn .4s ease both}
+.comment-avatar{flex:0 0 42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#8d9cff35,#75d7d025);border:1px solid #8d9cff55;color:#dfe3ff;font-weight:800;font-size:.72rem}
+.comment-content{min-width:0}
+.comment-author{font-size:.85rem;font-weight:700;color:#edf0ff}
+.comment-time{font-size:.7rem;color:#8994b3;font-weight:400}
+.comment-text{font-size:.85rem;color:#bfc6dc;line-height:1.8;margin:5px 0 0}
+.site-footer{border-top:1px solid var(--line);padding:28px 24px 38px;text-align:center;background:#090c15;color:#8791ad;font-size:.72rem}
+.credit-line{margin:0 0 7px}.credit-line strong{color:#cbd1ff}.copyright{margin:0}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.toast-message{position:fixed;bottom:22px;left:50%;z-index:1000;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:11px 17px;border-radius:10px;background:#dce2ff;color:#11162a;font-size:.8rem;box-shadow:0 12px 35px #0006;transition:.25s}
+.toast-message.show{opacity:1;transform:translate(-50%,0)}
+@keyframes popIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroDrift{from{transform:scale(1.02)}to{transform:scale(1.07)}}
+@media(max-width:760px){
+ .container{width:min(100% - 34px,var(--max))}
+ .header-container{padding:13px 17px}.brand-logo{font-size:.59rem;max-width:190px}.header-actions{gap:5px}.header-btn{padding:8px 10px;font-size:.63rem}
+ .hero-cover-section{min-height:780px;min-height:92svh;padding:130px 0 55px}
+ .hero-overlay{background:linear-gradient(90deg,rgba(8,11,22,.86),rgba(8,11,22,.38)),linear-gradient(0deg,#0d101b 0%,transparent 70%)}
+ .hero-title{font-size:clamp(2.5rem,11vw,4.5rem)}.hero-sapo{font-size:.94rem}
+ .video-standalone-section{padding-top:36px}.card-header{padding:16px 18px}
+ .article-body{padding-top:18px}.paragraph{font-size:1rem}
+ .standalone-audio-card,.comments-container{padding:20px}
+ .qa-interview-card{padding:19px}.qa-item{grid-template-columns:1fr;gap:10px}
+ .article-credits-block{flex-direction:column!important;align-items:flex-start!important}
+}
+@media(max-width:460px){
+ .brand-logo{max-width:135px;font-size:.52rem;letter-spacing:.1em}
+ .header-actions{flex-direction:column;align-items:stretch}.header-btn{font-size:.58rem;padding:6px 8px}
+ .hero-meta{font-size:.68rem}.category-tag-badge{font-size:.6rem}
+ .social-share-bar .share-btn{flex:1}.comment-item{padding:13px}.comment-avatar{flex-basis:36px;height:36px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* Tinh chỉnh chống dính chữ và ngắt dòng */
+.article-body .paragraph,
+.article-body p {
+  text-align: left;
+  word-spacing: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  white-space: normal;
+}
+.article-body .paragraph strong,
+.article-body p strong,
+.article-body .paragraph b,
+.article-body p b {
+  display: inline;
+  white-space: normal;
+}
+.brand-logo {
+  white-space: nowrap;
+  max-width: none;
+  flex-shrink: 0;
+  font-size: clamp(9px, 1.1vw, 12px);
+  letter-spacing: 0.08em;
+}
+.header-container {
+  gap: 10px;
+}
+</style>
+
+</head>
+<body>
+
+  <!-- Thanh tiến trình cuộn trang -->
+  <div class="reading-progress-bar" id="progressBar"></div>
+
+  <!-- HEADER TRANSPARENT NỔI TRÊN ẢNH HERO -->
+  <header class="site-header transparent-header">
+    <div class="header-container">
+      <div class="brand-logo">THIẾT KẾ DỰ ÁN TRUYỀN THÔNG ĐA PHƯƠNG TIỆN</div>
+      <div class="header-actions">
+        <button class="header-btn" onclick="scrollToComments()">💬 BÌNH LUẬN (<span id="commentCountHeader">2</span>)</button>
+        <button class="header-btn" onclick="copyArticleLink()">🔗 CHIA SẺ</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-wrapper">
+    
+    <!-- 1. KHOẢNH KHẮC BÌA / HERO IMAGE FULL-SCREEN OVERLAY -->
+    <section class="hero-cover-section">
+      <div class="hero-bg-image" style="background-image: url('Images/anh-bia.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content container">
+        <div class="category-tag-badge reveal">
+          <span class="icon">📝</span> PHÓNG SỰ CHÂN DUNG
+        </div>
+        
+        <h1 class="hero-title reveal">NGƯỜI ĐỨNG SAU CÔNG TRÌNH</h1>
+        <h2 class="hero-subtitle reveal">Một ngày theo chân người giám sát giữa nắng gió công trường</h2>
+        
+        <p class="hero-sapo reveal">
+          Đằng sau vẻ bề thế, vững chãi của một công trình hoàn thiện không chỉ là những khối bê tông, sắt thép khô khốc hay hàng trăm bản vẽ kỹ thuật phức tạp. Đó còn là hành trình thầm lặng của những con người phải có mặt từ rạng sáng đến tối mịt, theo sát từng centimet thi công và gánh trên vai trách nhiệm nặng nề về sự an toàn, tiến độ cũng như chất lượng của toàn bộ dự án.
+        </p>
+
+        <div class="hero-meta reveal">
+          <span class="location">📍 Công trường thi công</span>
+          <span class="dot">•</span>
+          <span class="author">Nội dung: <strong>Người đứng sau công trường</strong></span>
+          <span class="dot">•</span>
+          <span class="credit">Bài: <strong>Thái Thị Kỳ Duyên</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. KHỐI VIDEO PHÓNG SỰ -->
+    <section class="container video-standalone-section">
+      <div class="standalone-video-card reveal">
+        <div class="card-header">
+          <span class="icon">▶</span>
+          <h3>VIDEO PHÓNG SỰ <span class="duration">(01:29)</span></h3>
+        </div>
+        <div class="video-wrapper ratio-16-9">
+          <video controls poster="Media/Video/thumbnail.jpg">
+            <source src="Media/Video/video-phong-su.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ thẻ video.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ĐOẠN VĂN MỞ ĐẦU & ẢNH 2 -->
+    <section class="container article-body">
+      <h2 class="section-heading">Công việc phía sau những bức tường đang dần thành hình</h2>
+      
+      <p class="paragraph">Giữa không gian chói chang nắng gió, tiếng gầm hú liên tục của máy móc, tiếng sắt thép va đập và nhịp làm việc hối hả của hàng trăm công nhân, người giám sát công trình chọn cho mình một vị trí đặc biệt. Họ thường là những người quan sát nhiều nhất, di chuyển qua lại liên tục giữa các tầng lầu hay khoảng sân đầy bụi bặm, nhưng lại là người ít xuất hiện nhất trong các bức ảnh vinh danh khi công trình hoàn thành.</p>
+
+      <p class="paragraph">Một ngày làm việc điển hình của họ bắt đầu từ rất sớm, khi lớp sương mù buổi sáng còn chưa tan hết trên những giàn giáo. Khối lượng công việc khổng lồ mỗi ngày quay cuồng quanh việc theo dõi sát sao tiến độ thi công, kiểm tra từng mối hàn, lớp gạch, tiêu chuẩn mác bê tông cho đến việc đôn đốc công tác an toàn lao động của từng tổ đội.</p>
+
+      <!-- Inline Image 2 -->
+      <figure class="body-media">
+        <div class="image-holder ratio-16-9">
+         <img src="Images/hinh-1.jpg" alt="Anh Tông kiểm tra lại bản vẽ.">
+        </div>
+        <figcaption class="caption">
+          <strong>Anh Tông</strong> kiểm tra lại bản vẽ.
+        </figcaption>
+      </figure>
+
+      <p class="paragraph">Thoạt nhìn qua từ bên ngoài, nhiều người thường nghĩ công việc này đơn thuần chỉ là “đi tới đi lui quan sát và nhắc nhở”. Nhưng chỉ khi thực sự bước chân vào công trường, trải qua cái nóng hừng hực phả ra từ bê tông và áp lực gắt gao từ lịch giao nhà, mới hiểu mỗi quyết định của người giám sát đều cân não đến nhường nào. Mỗi chữ ký nghiệm thu, mỗi cái gật đầu cho qua hay yêu cầu đập đi làm lại đều gắn liền với uy tín, chi phí và sự an toàn tính mạng của bao người. Một chi tiết lệch lạc hay một sự cố nhỏ được phát hiện và khắc phục kịp thời hôm nay sẽ tránh cho công trình những hiểm họa khôn lường hàng chục năm về sau.</p>
+
+      <!-- PULL QUOTE -->
+      <div class="pull-quote-block reveal">
+        <blockquote class="quote-text">
+          “Hằng ngày công việc của tôi chủ yếu là theo dõi sát tiến độ, trực tiếp kiểm tra chất lượng từng hạng mục và giám sát chặt chẽ các khâu đang thi công. Công việc này không cho phép mình lơ đễnh dù chỉ một phút, vì chỉ cần một sơ suất nhỏ cũng có thể ảnh hưởng đến công sức của cả một tập thể.”
+        </blockquote>
+        <div class="quote-author">— Anh Tông (Giám sát công trình)</div>
+      </div>
+    </section>
+
+    <!-- 4. KHỐI AUDIO PODCAST -->
+    <section class="container audio-standalone-section">
+      <div class="standalone-audio-card reveal">
+        <div class="audio-badge-header">
+          <span class="icon">🎙️</span> AUDIO INTERVIEW / PODCAST CLIP
+        </div>
+        <h3 class="audio-title">AUDIO PODCAST / GIỌNG NÓI HIỆN TRƯỜNG <span class="duration">(0:00 - 0:32)</span></h3>
+        
+        <div class="audio-player-custom">
+          <audio controls id="mainAudio">
+            <source src="Media/Audio/voice-off.mp3" type="audio/mpeg">
+            Trình duyệt của bạn không hỗ trợ thẻ audio.
+          </audio>
+        </div>
+
+        <p class="audio-quote-desc">
+          <em>“Một vài âm thanh được ghi lại trong quá trình tác nghiệp.”</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. ĐOẠN VĂN THỨ 2 & CÁC ẢNH MỚI THÊM & Q&A -->
+    <section class="container article-body">
+      
+      <h2 class="section-heading">Một ngày bắt đầu từ những điều rất nhỏ</h2>
+      
+      <p class="paragraph">Trước khi tiếng máy thi công vang lên, người giám sát đã phải có mặt tại công trường. Một vòng kiểm tra nhanh được bắt đầu từ những khu vực tưởng như không đáng chú ý: lối đi, hệ thống điện tạm, giàn giáo, vật liệu được tập kết và những vị trí đang chuẩn bị bước vào thi công.</p>
+      
+      <!-- Ảnh thêm số 1 -->
+      <figure class="body-media">
+        <div class="image-holder ratio-16-9">
+          <img src="Images/hinh-2.jpg" alt="Kiểm tra hệ thống giàn giáo">
+        </div>
+        <figcaption class="caption">
+          Người giám sát cần liên tục di chuyển, quan sát và trao đổi tiến độ cùng công nhân.
+        </figcaption>
+      </figure>
+
+      <p class="paragraph">Công việc của họ không chỉ diễn ra trong lúc công nhân đang làm việc. Có những khoảng thời gian phải đứng trước bản vẽ, đối chiếu từng thông số với thực tế hiện trường, trao đổi với kỹ thuật viên hoặc nhắc lại yêu cầu cho các tổ đội. Một thay đổi nhỏ trên bản vẽ cũng có thể kéo theo nhiều thay đổi trong quá trình thi công.</p>
+      
+      <p class="paragraph">Giữa công trường luôn có hàng chục công việc diễn ra cùng lúc. Người giám sát vì thế phải liên tục di chuyển, quan sát và ghi nhớ. Khi một nhóm đang đổ bê tông, một nhóm khác có thể đang lắp đặt cốt thép, trong khi ở tầng trên, công nhân lại đang hoàn thiện tường. Mỗi khu vực đều có yêu cầu riêng và không cho phép sự chủ quan.</p>
+
+      <!-- Ảnh thêm số 2 -->
+      <figure class="body-media">
+        <div class="image-holder ratio-16-9">
+          <img src="Images/hinh-4.jpg" alt="Trao đổi với kỹ sư">
+        </div>
+        <figcaption class="caption">
+          Khảo sát hiện trạng công trình.
+        </figcaption>
+      </figure>
+
+      <p class="paragraph">Có những ngày công việc kết thúc khi trời đã tối. Nhưng trước khi rời công trường, họ vẫn phải kiểm tra lại những hạng mục quan trọng, ghi nhận vấn đề phát sinh và chuẩn bị cho công việc.</p>
+
+      <h2 class="section-heading">Khi trách nhiệm khắc sâu trong từng chi tiết nhỏ</h2>
+      
+      <p class="paragraph">Bước vào giai đoạn cao điểm của dự án, áp lực về tiến độ bàn giao luôn là thử thách khắc nghiệt nhất. Tuy nhiên, tiến độ không bao giờ được phép trở thành lý do để đánh đổi chất lượng. Người giám sát vừa phải là “cỗ máy điều hòa” kết nối hài hòa giữa đơn vị thiết kế, chủ đầu tư và lực lượng công nhân trực tiếp thi công, vừa phải là tấm lá chắn nghiêm khắc nhất giữ vững các tiêu chuẩn kỹ thuật.</p>
+
+      <p class="paragraph">Đôi mắt của người giám sát như được rèn luyện để nhận ra những bất thường nhỏ nhất: một mảng tường trát chưa đủ độ phẳng, khoảng cách thép đan bị lệch vài mm, hay một nhóm công nhân quên thắt dây an toàn khi làm việc trên cao. Đó là một công việc đòi hỏi sự tập trung cao độ, tính kỷ luật khắt khe cùng sự kiên nhẫn bền bỉ xuyên suốt từ ngày khởi công cho đến lúc nghiệm thu công trình.</p>
+
+      <!-- Highlight Image 3 (Đã bổ sung thẻ đóng figure đúng chuẩn) -->
+      <figure class="body-media highlight-media">
+        <div class="image-holder ratio-16-9">
+          <img src="Images/hinh-3.jpg" alt="Nhìn lại thành quả công trình">
+        </div>
+        <figcaption class="caption">
+          Quan sát tổng thể khu vực thi công.
+        </figcaption>
+      </figure>
+
+      <!-- Q&A INTERVIEW BOX -->
+      <div class="qa-interview-card reveal">
+        <div class="qa-title">GÓC PHỎNG VẤN NGẮN</div>
+        <div class="qa-content">
+          <div class="qa-item question">
+            <span class="q-badge">Hỏi</span>
+            <p>Theo anh, điều khó khăn và áp lực nhất khi đảm nhận vai trò người giám sát công trình là gì?</p>
+          </div>
+          <div class="qa-item answer">
+            <span class="a-badge">Trả lời</span>
+            <p>“Khó khăn nhất không phải là cái nắng, cái gió hay sự vất vả thể xác trên công trường, mà là làm sao dung hòa được bài toán cân não: đảm bảo mọi thứ hoàn thành đúng tiến độ cam kết nhưng tuyệt đối không được làm suy giảm dù chỉ 1% chất lượng và tiêu chuẩn an toàn của công trình.”</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KHỐI TÁC GIẢ BÀI & ẢNH -->
+      <div class="article-credits-block" style="display: flex; justify-content: space-between; align-items: center; margin-top: 35px; margin-bottom: 25px; font-family: 'Inter', sans-serif;">
+        <div class="photo-credit" style="font-size: 15px; color: #333333; font-style: italic;">Ảnh: Kỳ Duyên</div>
+        <div class="author-credit" style="font-size: 14px; font-weight: 800; color: #111111; letter-spacing: 0.5px; text-transform: uppercase;">BÀI: THÁI THỊ KỲ DUYÊN</div>
+      </div>
+    </section>
+
+    <!-- 6. BÌNH LUẬN & CHIA SẺ -->
+    <section class="container comments-section" id="commentsArea">
+      <div class="bottom-share-box reveal">
+        <h3>Chia sẻ bài viết này</h3>
+        <p>Giúp lan tỏa những câu chuyện thầm lặng đằng sau mỗi công trình:</p>
+        <div class="social-share-bar center">
+          <button class="share-btn fb" onclick="shareSocial('facebook')">Facebook</button>
+          <button class="share-btn zalo" onclick="shareSocial('zalo')">Zalo</button>
+          <button class="share-btn copy-link" onclick="copyArticleLink()">🔗 Sao chép link</button>
+        </div>
+      </div>
+
+      <div class="comments-container reveal">
+        <div class="comments-header">
+          <h3>BÌNH LUẬN (<span id="commentCount">2</span>)</h3>
+        </div>
+
+        <form class="comment-form" id="commentForm">
+          <input type="text" id="userName" placeholder="Họ và tên..." required>
+          <textarea id="userComment" rows="3" placeholder="Viết bình luận của bạn..." required></textarea>
+          <button type="submit" class="submit-comment-btn">Gửi bình luận</button>
+        </form>
+
+        <div class="comments-list" id="commentsList">
+          <div class="comment-item">
+            <div class="comment-avatar">NV</div>
+            <div class="comment-content">
+              <div class="comment-author">Nguyễn Văn An <span class="comment-time">• 2 giờ trước</span></div>
+              <p class="comment-text">Bài viết đọc rất xúc động! Cảm ơn tác giả đã khắc họa chân thực công việc thầm lặng nhưng đầy trách nhiệm này.</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">TH</div>
+            <div class="comment-content">
+              <div class="comment-author">Trần Hoàng <span class="comment-time">• 5 giờ trước</span></div>
+              <p class="comment-text">Giao diện báo e-Magazine thiết kế ảnh Hero full-screen ấn tượng quá!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p class="credit-line">Nội dung: <strong>Người đứng sau công trường</strong> | Thực hiện: <strong>Thái Thị Kỳ Duyên</strong></p>
+      <p class="copyright">© 2026 Báo Điện Tử - Chuyên mục Phóng sự Chân dung</p>
+    </div>
+  </footer>
+
+  
+
+<script>
+(function(){
+  const progress=document.getElementById('progressBar');
+  const header=document.querySelector('.site-header');
+  function onScroll(){
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    if(progress) progress.style.width=(max>0?window.scrollY/max*100:0)+'%';
+    if(header) header.classList.toggle('scrolled',window.scrollY>35);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls=document.querySelectorAll('.hero-content > *, .standalone-video-card, .article-body > *, .standalone-audio-card, .qa-interview-card, .bottom-share-box, .comments-container');
+  revealEls.forEach(el=>el.classList.add('reveal'));
+  if('IntersectionObserver' in window && !reduced){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
+    }),{threshold:.1,rootMargin:'0px 0px -25px 0px'});
+    revealEls.forEach(el=>observer.observe(el));
+  }else{revealEls.forEach(el=>el.classList.add('visible'))}
+
+  let toastTimer;
+  function toast(message){
+    let node=document.querySelector('.toast-message');
+    if(!node){node=document.createElement('div');node.className='toast-message';node.setAttribute('role','status');document.body.appendChild(node)}
+    node.textContent=message;node.classList.add('show');clearTimeout(toastTimer);
+    toastTimer=setTimeout(()=>node.classList.remove('show'),2600);
+  }
+  window.scrollToComments=function(){
+    const target=document.getElementById('commentsArea');
+    if(target)target.scrollIntoView({behavior:reduced?'auto':'smooth'});
+  };
+  window.copyArticleLink=function(){
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(location.href).then(()=>toast('Đã sao chép liên kết bài viết.')).catch(()=>toast('Hãy sao chép địa chỉ trên thanh trình duyệt.'));
+    }else{
+      const input=document.createElement('textarea');input.value=location.href;input.style.position='fixed';input.style.opacity='0';document.body.appendChild(input);input.select();
+      try{document.execCommand('copy');toast('Đã sao chép liên kết bài viết.')}catch(e){toast('Hãy sao chép địa chỉ trên thanh trình duyệt.')}
+      input.remove();
+    }
+  };
+  window.shareSocial=function(network){
+    const url=encodeURIComponent(location.href),title=encodeURIComponent(document.title);
+    if(network==='facebook')window.open('https://www.facebook.com/sharer/sharer.php?u='+url,'_blank','noopener,noreferrer,width=640,height=520');
+    else window.open('https://zalo.me/share?url='+url+'&title='+title,'_blank','noopener,noreferrer,width=640,height=520');
+  };
+
+  const form=document.getElementById('commentForm');
+  const list=document.getElementById('commentsList');
+  const count=document.getElementById('commentCount');
+  const headerCount=document.getElementById('commentCountHeader');
+  const storageKey='nguoiDungSauCongTrinhComments';
+  function updateCount(){const n=list?list.querySelectorAll('.comment-item').length:2;if(count)count.textContent=n;if(headerCount)headerCount.textContent=n}
+  function addComment(name,text,time){
+    const item=document.createElement('div');item.className='comment-item';
+    const avatar=document.createElement('div');avatar.className='comment-avatar';avatar.textContent=name.trim().split(/\s+/).slice(-2).map(w=>w[0]).join('').toUpperCase();
+    const content=document.createElement('div');content.className='comment-content';
+    const author=document.createElement('div');author.className='comment-author';author.textContent=name+' ';
+    const stamp=document.createElement('span');stamp.className='comment-time';stamp.textContent='• '+(time||'Vừa xong');author.appendChild(stamp);
+    const p=document.createElement('p');p.className='comment-text';p.textContent=text;
+    content.append(author,p);item.append(avatar,content);list.appendChild(item);
+  }
+  try{
+    const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');
+    saved.forEach(c=>addComment(c.name,c.text,c.time));updateCount();
+  }catch(e){}
+  if(form)form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('userName').value.trim();
+    const text=document.getElementById('userComment').value.trim();
+    if(!name||!text)return;
+    const item={name,text,time:'Vừa xong'};addComment(name,text,item.time);updateCount();
+    try{const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');saved.push(item);localStorage.setItem(storageKey,JSON.stringify(saved))}catch(e){}
+    form.reset();toast('Cảm ơn bạn đã để lại bình luận!');
+  });
+  updateCount();
+})();
+</script>
+
+</body>
+</html>
